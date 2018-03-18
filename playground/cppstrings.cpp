@@ -12,5 +12,18 @@ int main()
     std::cout << "The string c is: " << c << std::endl;
     std::cout << "The length of c is: " << c.length() << std::endl;
 
+    int loc = c.find_first_of('w');
+    c.replace(loc, 1, 1, 'W');
+    std::cout << "The string c is now: " << c << std::endl;
+
+    c.insert(5, " to the");
+    std::cout << "The string c is now: " << c << std::endl;
+
+    std::stringstream ss;
+    ss << c;
+    std::string token;
+    while(std::getline(ss, token, ' '))
+        std::cout << "Token: " << token << std::endl;
+
     return 0;
 }

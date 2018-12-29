@@ -1,13 +1,15 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdbool.h>
 
 const char * string_in(const char * s1, const char * s2);
+const char * string_in_2(const char * s1, const char * s2);
 
 int main(void)
 {
-	char array[40] = "0123456789";
-	const char * string = "3457";
-	const char * ret_val = string_in(array, string);
+	char array[40] = "0123434556789";
+	const char * string = "345";
+	const char * ret_val = string_in_2(array, string);
 	if (ret_val != NULL)
 		printf("s2 found in s1 at %zd\n", ret_val - array);
 	else
@@ -43,6 +45,24 @@ const char * string_in(const char * s1, const char * s2)
 			++s2_pos;
 		}
 		++s1;
+	}
+	return NULL;
+}
+
+const char * string_in_2(const char * s1, const char * s2)
+{
+	if (*s2 == '\0')
+		return NULL;
+	for (int i = 0; i < strlen(s1); ++i)
+	{
+		const char * p1 = &s1[i], * p2 = s2;
+		while (*p1 == *p2)
+		{
+			++p1;
+			++p2;
+		}
+		if (*p2 == '\0')
+			return &s1[i];
 	}
 	return NULL;
 }
